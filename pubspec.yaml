@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   weather:
-    path: weather
+    path: packages/weather
 
 
   cupertino_icons: ^1.0.2
