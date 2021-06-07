@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:module_app/repository/remote_config_manager.dart';
 import 'package:module_app/repository/route_manager.dart';
-import 'package:weather/weather.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Weather.initFirebase();
+    RemoteConfigManager.initFirebase();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'OpenSans'),

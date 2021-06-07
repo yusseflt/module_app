@@ -15,18 +15,4 @@ class RouteManager {
 
     _routes.addAll(Weather.routes());
   }
-
-  static pushNamedWithTransition(
-    BuildContext context,
-    String pageName,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)
-        transitionsBuilder,
-    Duration transitionsDuration,
-  ) {
-    return PageRouteBuilder(
-      pageBuilder: (context, anim1, anim2) => _routes[pageName]!.call(context),
-      transitionDuration: transitionsDuration,
-      transitionsBuilder: transitionsBuilder,
-    );
-  }
 }
