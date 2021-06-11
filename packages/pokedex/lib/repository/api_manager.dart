@@ -16,4 +16,15 @@ class ApiManager {
       throw e;
     }
   }
+
+  Future getPokemonDetailsById(int id) async {
+    try {
+      Uri uri = Uri.parse('$POKEDEX_URL/pokemon/$id');
+      var res = await RequestHandler.handleResponse(await http.get(uri));
+
+      return res;
+    } catch (e) {
+      throw e;
+    }
+  }
 }

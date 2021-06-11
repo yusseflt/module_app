@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/pages/pokemon_details_page.dart';
 import 'package:pokedex/pages/pokedex_page.dart';
 
 class NavigatorManager {
@@ -10,6 +11,8 @@ class NavigatorManager {
 
   Map<String, Widget Function(BuildContext)> get routes => {
         "pokedex": (context) => PokedexPage(),
+        "pokemonDetails": (context) =>
+            PokemonDetailsPage(ModalRoute.of(context)!.settings.arguments)
       };
 
   static NavigatorState get navigator =>

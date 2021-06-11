@@ -11,16 +11,21 @@ class Pokedex extends StatelessWidget {
   Widget build(BuildContext context) {
     NavigatorManager navigatorManager = NavigatorManager.instance;
     navigatorManager.parentNavigatorKey = parentNavigatorKey;
-
-    return Navigator(
-      key: navigatorManager.navigatorKey,
-      initialRoute: 'pokedex',
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute(
-          settings: settings,
-          builder: navigatorManager.routes[settings.name]!,
-        );
+    return WillPopScope(
+      onWillPop: () async {
+        return true;
       },
+      child: Navigator(
+        key: navigatorManager.navigatorKey,
+        initialRoute: 'pokedex',
+        onGenerateRoute: (RouteSettings settings) {
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (context) =>
+                navigatorManager.routes[settings.name]!.call(context),
+          );
+        },
+      ),
     );
   }
 }

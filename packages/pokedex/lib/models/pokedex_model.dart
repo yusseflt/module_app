@@ -53,11 +53,11 @@ class Description {
   });
 
   String? description;
-  Language? language;
+  PokemonSpecies? language;
 
   factory Description.fromJson(Map<String, dynamic> json) => Description(
         description: json["description"],
-        language: Language.fromJson(json["language"]),
+        language: PokemonSpecies.fromJson(json["language"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -66,8 +66,8 @@ class Description {
       };
 }
 
-class Language {
-  Language({
+class PokemonSpecies {
+  PokemonSpecies({
     this.name,
     this.url,
   });
@@ -75,7 +75,7 @@ class Language {
   String? name;
   String? url;
 
-  factory Language.fromJson(Map<String, dynamic> json) => Language(
+  factory PokemonSpecies.fromJson(Map<String, dynamic> json) => PokemonSpecies(
         name: json["name"],
         url: json["url"],
       );
@@ -92,11 +92,11 @@ class Name {
     this.name,
   });
 
-  Language? language;
+  PokemonSpecies? language;
   String? name;
 
   factory Name.fromJson(Map<String, dynamic> json) => Name(
-        language: Language.fromJson(json["language"]),
+        language: PokemonSpecies.fromJson(json["language"]),
         name: json["name"],
       );
 
@@ -113,11 +113,11 @@ class PokemonEntry {
   });
 
   int? entryNumber;
-  Language? pokemonSpecies;
+  PokemonSpecies? pokemonSpecies;
 
   factory PokemonEntry.fromJson(Map<String, dynamic> json) => PokemonEntry(
         entryNumber: json["entry_number"],
-        pokemonSpecies: Language.fromJson(json["pokemon_species"]),
+        pokemonSpecies: PokemonSpecies.fromJson(json["pokemon_species"]),
       );
 
   Map<String, dynamic> toJson() => {

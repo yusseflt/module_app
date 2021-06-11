@@ -50,7 +50,15 @@ class _WeatherPageState extends State<WeatherPage> {
               stream: bloc.weatherStream,
               builder: (context, AsyncSnapshot<WeatherModel> snapshot) {
                 if (snapshot.hasError) {
-                  return Container(child: Center(child: Text('Deu erro')));
+                  return Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Center(
+                      child: Text(
+                        'Erro: ${snapshot.error}',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
                 }
                 if (snapshot.hasData) {
                   WeatherModel? weather = snapshot.data;

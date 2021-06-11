@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/bloc/pokedex_bloc.dart';
+import 'package:pokedex/helpers/text_handler.dart';
 import 'package:pokedex/models/pokedex_model.dart';
+import 'package:pokedex/repository/navigator_manager.dart';
+import 'package:pokedex/widgets/pokedex_list_item.dart';
 
 class PokedexPage extends StatefulWidget {
   const PokedexPage({Key? key}) : super(key: key);
@@ -21,42 +24,59 @@ class _PokedexPageState extends State<PokedexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder(
-          stream: bloc.pokedexStream,
-          builder: (context, AsyncSnapshot<List<PokemonEntry>> snapshot) {
-            if (snapshot.hasData) {
-              List<PokemonEntry> list = snapshot.data!;
-              return GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemCount: list.length,
-                itemBuilder: (context, index) {
-                  return Image.network(
-                    'https://www.pkparaiso.com/imagenes/xy/sprites/animados/${list[index].pokemonSpecies!.name}.gif',
-                    errorBuilder: (context, obj, trace) => Center(
-                      child: Icon(Icons.close),
-                    ),
-                    loadingBuilder: (context, child, loader) {
-                      if (loader == null) {
-                        return Center(child: child);
-                      }
-                      return Center(
-                          child: CircularProgressIndicator(
-                        value: loader.expectedTotalBytes != null
-                            ? loader.cumulativeBytesLoaded /
-                                loader.expectedTotalBytes!
-                            : null,
-                      ));
-                    },
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: MediaQuery.of(context).padding,
+            child: IconButton(
+              onPressed: () {
+                NavigatorManager.parentNavigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+            ),
+          ),
+          Expanded(
+            child: StreamBuilder(
+                stream: bloc.pokedexStream,
+                builder: (context, AsyncSnapshot<List<PokemonEntry>> snapshot) {
+                  if (snapshot.hasError) {
+                    return Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Center(
+                        child: Text(
+                          'Erro: ${snapshot.error}',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
+                  }
+                  if (snapshot.hasData) {
+                    List<PokemonEntry> list = snapshot.data!;
+                    return GridView.builder(
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, top: 12, bottom: 32),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                          mainAxisExtent: 100),
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        return PokedexListItem(
+                          pokemon: list[index].pokemonSpecies!,
+                          index: index,
+                        );
+                      },
+                    );
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(),
                   );
-                },
-              );
-            }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }),
+                }),
+          ),
+        ],
+      ),
     );
   }
 }
