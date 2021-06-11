@@ -10,11 +10,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, 'weather');
-          },
-          child: Text('Navegar'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'weather');
+              },
+              child: Text('Clima'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'pokedex');
+              },
+              child: Text('Pokedex'),
+            ),
+          ],
         ),
       ),
     );

@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   weather:
     path: packages/weather
+  pokedex:
+    path: packages/pokedex
 
 
   cupertino_icons: ^1.0.2
