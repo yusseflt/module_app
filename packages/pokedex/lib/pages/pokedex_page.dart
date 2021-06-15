@@ -27,13 +27,31 @@ class _PokedexPageState extends State<PokedexPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: MediaQuery.of(context).padding,
-            child: IconButton(
-              onPressed: () {
-                NavigatorManager.parentNavigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          Container(
+            height: 57,
+            margin: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top,
+              left: MediaQuery.of(context).padding.left,
+              right: MediaQuery.of(context).padding.right,
+            ),
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    onPressed: () {
+                      NavigatorManager.parentNavigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    'Pokedex',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(

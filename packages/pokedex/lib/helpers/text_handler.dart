@@ -14,7 +14,7 @@ abstract class TextHandler {
       "flying": Color.fromRGBO(225, 134, 68, 1),
       "grass": Color.fromRGBO(139, 198, 96, 1),
       "poison": Color.fromRGBO(148, 70, 155, 1),
-      "eletric": Color.fromRGBO(242, 209, 84, 1),
+      "electric": Color.fromRGBO(242, 209, 84, 1),
       "ground": Color.fromRGBO(219, 193, 117, 1),
       "psychic": Color.fromRGBO(230, 99, 136, 1),
       "rock": Color.fromRGBO(180, 161, 75, 1),
@@ -28,6 +28,6 @@ abstract class TextHandler {
       "???": Color.fromRGBO(117, 159, 145, 1),
     };
 
-    return typesColors[type];
+    return typesColors[type].withOpacity(0.9);
   }
 }

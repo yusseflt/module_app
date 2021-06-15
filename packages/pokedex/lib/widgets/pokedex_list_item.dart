@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/helpers/text_handler.dart';
 import 'package:pokedex/models/pokedex_model.dart';
 import 'package:pokedex/repository/navigator_manager.dart';
+import 'package:pokedex/widgets/loader_image.dart';
 
 class PokedexListItem extends StatelessWidget {
   final PokemonSpecies pokemon;
@@ -69,26 +70,10 @@ class PokedexListItem extends StatelessWidget {
                         )
                       ],
                     ),
-                    Image.network(
+                    LoaderImage(
                       'https://www.pkparaiso.com/imagenes/xy/sprites/animados/${pokemon.name}.gif',
                       width: 70,
-                      errorBuilder: (context, obj, trace) => Center(
-                        child: Icon(Icons.close),
-                      ),
-                      loadingBuilder: (context, child, loader) {
-                        if (loader == null) {
-                          return Center(child: child);
-                        }
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loader.expectedTotalBytes != null
-                                ? loader.cumulativeBytesLoaded /
-                                    loader.expectedTotalBytes!
-                                : null,
-                          ),
-                        );
-                      },
-                    ),
+                    )
                   ],
                 ),
               ),
