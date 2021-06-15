@@ -25,6 +25,12 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text('Pokedex'),
             ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'taskManager');
+              },
+              child: Text('Task Manager'),
+            ),
           ],
         ),
       ),

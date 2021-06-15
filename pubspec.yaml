@@ -21,6 +21,10 @@ dependencies:
   http: ^0.13.3
   firebase_remote_config: ^0.10.0
   firebase_core: ^1.2.0
+  system_info: ^1.0.0
+  rxdart: ^0.27.1
+  battery_plus: ^1.0.2
+  disk_space: ^0.1.1
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yusseftoutenghe.module_app">
+    package="com.yusseftoutenge.module_app">
 
     <uses-permission android:name="android.permission.INTERNET" /> 
 
