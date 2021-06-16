@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:module_app/pages/home_page.dart';
-import 'package:module_app/pages/task_manager_page.dart';
+import 'package:module_app/pages/music_list_page.dart';
 
 class RouteManager {
   static Map<String, Widget Function(BuildContext)> _routes = {};
@@ -10,7 +10,7 @@ class RouteManager {
   RouteManager() {
     _routes = {
       "home": (context) => HomePage(),
-      "taskManager": (context) => TaskManagerPage(),
+      "musicList": (context) => MusicListPage(),
     };
   }
 }

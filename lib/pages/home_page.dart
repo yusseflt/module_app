@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'taskManager');
+                Navigator.pushNamed(context, 'musicList');
               },
               child: Text('Task Manager'),
             ),
