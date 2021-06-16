@@ -9,8 +9,6 @@ class RemoteConfigManager {
     await Firebase.initializeApp();
     await remoteConfigInstance.fetchAndActivate();
 
-    print(remoteConfigInstance.getAll());
-
     Weather.addApiKey(remoteConfigInstance.getString('weather_api_key'));
   }
 }
